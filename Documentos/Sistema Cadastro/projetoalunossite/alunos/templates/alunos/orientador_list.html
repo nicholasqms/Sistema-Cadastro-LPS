@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Orientadores</h2>
+    <ul>
+        <table id="orientadores" class='sortable table table-striped'>
+        <tr>
+            <th>Nome</th>
+            <th>Id</th>
+            <th>Ativo(S/N)</th>
+            <th>Admin(S/N)</th>
+            <th>Data Nascimento</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Contato</th>           
+            <th>Numero Registro</th>          
+        </tr>
+        
+        {% for Orientador in object_list %}
+	        {% url 'orientador_update' Orientador.id as Orientador_url %} 
+        <tr>
+            <td><a href={{Orientador_url}}  >{{ Orientador.name }}</a></td>
+            <td>{{Orientador.pk}}</td>
+            <td>{{ Orientador.is_active }}</td>
+            <td>{{ Orientador.is_admin }}</td>
+            <td>{{ Orientador.data_Nascimento }}</td>
+            <td>{{ Orientador.CPF }}</td>
+            <td>{{ Orientador.email }}</td>
+            <td>{{ Orientador.contato}}</td>
+            <td>{{ Orientador.numero_Registro }}</td>      
+        {% empty %}
+            <li>Não existem orientadores cadastrados no sistema.</li> 
+        {% endfor %}
+            </tr>
+        </table>
+    </ul>
+{% endblock %}

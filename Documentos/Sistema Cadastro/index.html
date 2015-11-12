@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+{% load staticfiles %}        
+    <head>      
+        <title> Projeto Alunos</title>
+         <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <link rel="stylesheet" 
+href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+        <script type="text/javascript" 
+src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="{% static '/javascripts/sorttable.js' %}"></script>
+        <script src='http://kryogenix.org/code/browser/sorttable/sorttable.js'></script>
+        <style>
+          
+   th{
+    color: white;
+    border:0px solid black;
+    background-color:#333;  
+    }
+tr:nth-child(odd) { background: #dfdfdf; }            
+   td {
+    border:1px solid black;  
+    }
+div.block {
+    float: left;
+    clear: up;
+}
+ul.header {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+            
+li.header {
+    float:left;
+    clear:up;
+}
+
+a.header:link, a.header:visited {
+    display: block;
+    width: 200px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #98bf21;
+    text-align: left;
+    padding: 4px;
+    text-decoration: none;
+    text-transform: none;
+}
+
+a.header:hover, a.header:active {
+    background-color: #7A991A;
+}
+</style>
+         <link rel="stylesheet" type="text/css" href="/base.css" />
+<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="/static/admin/css/ie.css" /><![endif]-->
+        <meta name="robots" content="NONE,NOARCHIVE" />
+      </head>
+
+    <body class="dashboard">                                                                                 
+        <!--Container -->
+    <div id="container">
+
+     
+    <!-- Header -->
+      <!--  <h1 id="site-name"><a href="/home/">Projeto Alunos</a></h1>-->
+
+        </div>
+        
+        <nav>
+        <div id="menu" class="header">
+            
+               
+                 
+             {% if user.is_authenticated %}     
+            <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+          <li><a>Sistema Alunos</a></li> 
+        <li class="active"><a href='/home/'>Home</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Cadastrar <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+           <li ><a  href='/students/add/'>Cadastrar um Aluno</a> </li>
+           <li ><a href='/orientadores/add/'>Cadastrar um Orientador</a></li>      
+           </ul>
+        </li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Listar <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+               <li ><a  href='/students/'>Listar Alunos</a></li>
+              <li ><a href='/orientadores/'>Listar Orientadores</a></li>
+    </ul>
+          </li>
+          <li class="active"><a href='/logout/'>Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+            {% else %}
+             <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"></a>
+    </div>
+            <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+          <li><a>Sistema Alunos</a></li>  
+        <li class="active"><a href='/login/'>Login</a></li>
+          <li class="active"><a href='/register/'>Cadastre-se</a></li>                  
+      </ul>
+    </div>
+      </div>
+                 </div>
+      </nav> 
+            {% endif %}
+            </div>
+            </nav>
+            <div class="block" id="content">
+                {% block content %}{% endblock content %}
+        </div>               
+    </body>
+</html>
+

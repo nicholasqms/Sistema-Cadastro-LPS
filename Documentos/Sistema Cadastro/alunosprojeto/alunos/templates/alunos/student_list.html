@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2>Alunos</h2>
+    <ul>
+        
+        <table id="alunos" class='sortable table table-striped'>
+        <tr>
+            <th>Nome</th>
+            <th>Id</th>
+            <th>Status</th>
+            <th>Bolsa</th>
+            <th>Tipo</th>
+            <th>Data Nascimento</th>
+            <th>DRE</th>
+            <th>RG</th>
+            <th>CEP</th>
+            <th>Endereço</th>
+            <th>Telefone</th>
+            <th>Curso</th>
+            <th>Número do Passaporte</th>
+            <th>Validade</th>
+            <th>Agência</th>
+            <th>Conta</th>
+            <th>Orientador</th>          
+            </tr>
+        
+        {% for Student in object_list %}
+	        {% url 'student_update' Student.id as Student_url %}
+            {% url 'orientador-update' Student.orientador_aluno  as Orientador_url %} 
+        <tr>
+            <td><a href= "{{Student_url}}"  >{{ Student.name }}</a></td>
+            <td>{{Student.pk}}</td>
+            <td>{{Student.status}}</td>
+            <td>{{ Student.bolsa }}</td>
+            <td>{{ Student.tipo }}</td>
+            <td>{{ Student.data_Nascimento }}</td>
+            <td>{{ Student.DRE }}</td>
+            <td>{{ Student.RG }}</td>
+            <td>{{ Student.CEP }}</td>
+            <td>{{ Student.endereco }}</td>
+            <td>{{ Student.telefone }}</td>
+            <td>{{ Student.curso }}</td>
+            <td>{{ Student.passaporte_numero }}</td>
+            <td>{{ Student.passaporte_validade }}</td>
+            <td>{{ Student.numero_agencia }}</td>
+            <td>{{ Student.numero_conta }}</td>
+            <td>{{ Student.orientador_aluno }}</td>
+<!--            {% for x in Student.studentFieldsList %}
+                {{ atttribute }} {{ x }}
+                <li>{{Student.attribute|safe}}</li>
+            {% endfor %} -->
+        {% empty %}
+            <li>Não existem alunos cadastrados no sistema.</li> 
+        {% endfor %}
+            </tr>
+            
+        </table>
+    </ul>
+     
+
+{% endblock %}

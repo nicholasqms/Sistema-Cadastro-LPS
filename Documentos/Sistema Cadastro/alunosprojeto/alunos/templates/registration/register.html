@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Create an account{% endblock %}
+
+{% block content %}
+
+
+  <form action="" method="post">
+      {% csrf_token %}
+      <!--{{ form.as_p }}-->
+      <p><label for="id_username">Username:</label> <input id="id_username" maxlength="30" name="username" type="text" /> <span class="helptext">30 caracteres ou menos.</span></p>
+      <p><label for="id_password1">Password:</label> <input id="id_password1" name="password1" type="password" /></p>
+      <p><label for="id_password2">Confirma&ccedil;&atilde;o:</label> <input id="id_password2" name="password2" type="password" /> <span class="helptext">Repita a senha.</span></p>
+      <input type="submit" value="Criar Conta">
+  </form>
+    
+{% endblock %}
