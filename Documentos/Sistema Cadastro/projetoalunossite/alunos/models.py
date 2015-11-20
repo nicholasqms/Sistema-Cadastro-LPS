@@ -22,19 +22,6 @@ tipoOrientador = ['Professor','Pesquisador']
 
 
 # Create your models here.
-"""def dre_is_valid(value):
-    if (len(str(value)) != 9):
-        raise ValidationError('%s não é um valor válido, insira um numero correto' %value)  
-    indice = soma = 0
-    for indice in range(0,8):
-        soma += ((int(str(value)[indice]))*(indice+1))
-    if ((soma%10) != int(str(value)[indice+1])):
-            raise ValidationError('%s não é um dre válido' %value)
-
-def length_validator(value):
-    if (len(str(value)) != 9):
-        raise ValidationError('%s não é um valor válido, insira um numero correto' %value)  
-"""
 
 class StudentStatus(models.Model):
     name = models.CharField(verbose_name='Status do Aluno',max_length = 255,default='Ativo')

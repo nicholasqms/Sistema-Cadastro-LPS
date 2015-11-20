@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <form action="" method="post">{% csrf_token %}
-        <p><a target="popup" onclick="window.open('test-lps2/register/','name','width=800,height=400')">Novo Usuário</a>(após adicionar o novo usuário <a href="" onclick="window.location.reload(true);">recarregue</a> essa página)</p>
+        <p><a target="popup" onclick="window.open('/test-lps2/register/','name','width=800,height=400')">Novo Usuário</a>(após adicionar o novo usuário <a href="" onclick="window.location.reload(true);">recarregue</a> essa página)</p>
     {% for field in form %}
     <p>{{ field.label_tag }} {{ field }}</p>
        {{ field.errors }}

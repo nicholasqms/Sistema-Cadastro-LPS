@@ -18,47 +18,62 @@ from django.shortcuts import render
 
 
 from .forms import *
-from .models import Student, Orientador, studentFieldsList, orientadorFieldsList
+from .models import Student,Orientador, studentFieldsList,orientadorFieldsList
 from mysite import settings
 # Create your views here.
 
 class HomePageView(TemplateView):
     template_name = "home.html"
-
+	
 class StudentList(ListView):
     model = Student
+    
 
-
+"""class StudentCreate(CreateView):
+    model = Student
+    fields = studentFieldsList
+    sucess_url = reverse_lazy('student-list')"""
 class StudentCreate(CreateView):
     form_class = StudentForm
     template_name = 'student_form.html'
     sucess_url = reverse_lazy('student-list')
-
-"""
+    
+class OrientadorCreate(CreateView):
+    form_class = OrientadorForm
+    template_name = 'orientador_form.html'
+    sucess_url = reverse_lazy('orientador-list')
+"""	  
       def form_valid(self,form):
             if (Student.dre_valid()):
                 return super(StudentCreate,self).form_valid(form)
 
+"""
+"""
+class StudentUpdate(UpdateView):
+    model = Student
+    fields = studentFieldsList
+    sucess_url = reverse_lazy('student-list')
 """
 class StudentUpdate(UpdateView):
     model = Student
     form_class = StudentUpdateForm
     template_name = 'student_form.html'
     sucess_url = reverse_lazy('student-list')
+    
+class OrientadorUpdate(UpdateView):
+    model = Orientador
+    form_class = OrientadorUpdateForm
+    template_name = 'orientador_form.html'
+    success_url = reverse_lazy('orientador-list')
 
 class StudentDelete(DeleteView):
     model = Student
-    success_url = reverse_lazy('student-list')
-
+    success_url = reverse_lazy('student-list')                
+        
 class OrientadorList(ListView):
-     model = Orientador
+     model = Orientador	
 
-class OrientadorCreate(CreateView):
-    model = Orientador
-    form_class = OrientadorForm
-    template_name = 'orientador_form.html'
-    sucess_url = reverse_lazy('orientador-list')
-"""
+"""	  
       def form_valid(self,form):
             if (Orientador.dre_valid()):
                 return super(OrientadorCreate,self).form_valid(form)
@@ -66,10 +81,10 @@ class OrientadorCreate(CreateView):
 """
 class OrientadorUpdate(UpdateView):
     model = Orientador
-    form_class = OrientadorUpdateForm
-    template_name = 'orientador_form.html'
+    fields = orientadorFieldsList
     sucess_url = reverse_lazy('orientador-list')
-
+        
 class OrientadorDelete(DeleteView):
     model = Orientador
-    success_url = reverse_lazy('orientador-list')
+    success_url = reverse_lazy('orientador-list')        
+                    
